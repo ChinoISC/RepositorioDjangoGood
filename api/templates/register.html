@@ -60,7 +60,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="password_repeat">
+                                            id="exampleRepeatPassword" placeholder="Repeat Password"
+                                            name="password_repeat">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -82,6 +83,16 @@
                                 <a class="small" href="{% url 'login'%}">Already have an account? Login!</a>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="border-left-primary ">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
                     </div>
                 </div>
             </div>

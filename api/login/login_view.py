@@ -24,6 +24,9 @@ def login_view(request):
     return render(request, template_name)  # Nombre de tu template
 
 def register_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -44,7 +47,6 @@ def register_view(request):
                 )
                 user.save()
                 messages.success(request, 'Tu cuenta ha sido creada exitosamente.')
-                return redirect('login')  # Redirige al login después del registro
         else:
             messages.error(request, 'Las contraseñas no coinciden.')
     
